@@ -14,7 +14,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "devDependencies": {
     "@types/uuid": "^3.4.6",
     "typescript": "^3.7.2"
