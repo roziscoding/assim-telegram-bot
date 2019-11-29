@@ -1,0 +1,17 @@
+{
+  "name": "Telegram a s s i m Bot",
+  "description": "Telegram Chatbot pra falar a s s i m",
+  "repository": "https://github.com/rjmunhoz/assim-telegram-bot",
+  "keywords": ["node", "telegram", "chatbot", "assim", "fun", "text"],
+  "env": {
+    "TELEGRAM_TOKEN": {
+      "description": "Telegram Bot API token",
+      "required": true
+    },
+    "SERVER_EXTERNAL_HOST": {
+      "description": "Your Heroku app URL, whith HTTPs",
+      "value": "https://my-app.herokuapp.com",
+      "required": true
+    }
+  }
+}
