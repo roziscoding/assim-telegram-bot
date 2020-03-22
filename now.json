@@ -1,0 +1,9 @@
+{
+  "env": {
+    "TELEGRAM_TOKEN": "@assimbot-telegram-token"
+  },
+  "github": {
+    "enabled": true,
+    "autoJobCancelation": true
+  }
+}

@@ -1,4 +1,10 @@
 import uuid from 'uuid/v4'
+import logdown from 'logdown'
+import { InlineQuery, InlineQueryResultArticle } from 'telegram-typings'
+import { TelegramContext } from '../telegram/types/TelegramContext'
+import { endWithInlineQueryResults } from '../telegram/reply/end-with-inline-query-results'
+
+const logger = logdown('npm-telegram-bot:inline-query')
 
 function transform (query: string) {
   return `\`${query.split('').join(' ')}\``
@@ -71,9 +77,7 @@ function getNonPreResults (query: string) {
   ]
 }
 
-export function getResults (query?: string) {
-  if (!query) return []
-
+export function getResults (query: string): InlineQueryResultArticle[] {
   const results = hasPre(query)
     ? getPreResults(query)
     : getNonPreResults(query)
@@ -87,4 +91,17 @@ export function getResults (query?: string) {
       description: result
     }
   })
+}
+
+export function inliqueryHandler (query: InlineQuery, context: TelegramContext) {
+  logger.debug('Received inline query', query)
+
+  if (!query.query) {
+    logger.debug('Aborting due to empty query')
+    return context.res.end()
+  }
+
+  const results = getResults(query.query)
+
+  endWithInlineQueryResults(results, context, { cacheTime: 0, isPersonal: false })
 }
