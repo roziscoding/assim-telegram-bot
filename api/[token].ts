@@ -6,7 +6,7 @@ import { getUpdateHandler, getAuthenticatedContext } from '../telegram'
 
 export default (req: NowRequest, res: NowResponse) => {
   const handleUpdate = getUpdateHandler({
-    inlineQuery: inliqueryHandler
+    inlineQuery: inliqueryHandler(config.telegram.token)
   })
 
   getAuthenticatedContext(config.telegram.token, req, res)

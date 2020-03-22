@@ -28,7 +28,7 @@ export type UpdateHandlers = {
 export const getUpdateHandler = (handlers: Partial<UpdateHandlers>) => async (context: TelegramContext) => {
     const { update } = context
 
-    const debug = (namespace: string, ...params: any[]) => logdown(`npm-telegram-bot:handlers:${namespace}`).debug(...params)
+    const debug = (namespace: string, ...params: any[]) => logdown(`telegram:handlers:${namespace}`).debug(...params)
     debug('generic', 'Received new update with ID', update.update_id)
 
     if (update.message?.entities && update.message.entities && update.message.entities.length && update.message.text) {

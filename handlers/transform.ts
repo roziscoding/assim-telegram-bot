@@ -4,7 +4,7 @@ import { InlineQuery, InlineQueryResultArticle } from 'telegram-typings'
 import { TelegramContext } from '../telegram/types/TelegramContext'
 import { endWithInlineQueryResults } from '../telegram/reply/end-with-inline-query-results'
 
-const logger = logdown('npm-telegram-bot:inline-query')
+const logger = logdown('assim-telegram-bot:inline-query')
 
 function transform (query: string) {
   return `\`${query.split('').join(' ')}\``
@@ -93,7 +93,7 @@ export function getResults (query: string): InlineQueryResultArticle[] {
   })
 }
 
-export function inliqueryHandler (query: InlineQuery, context: TelegramContext) {
+export const inliqueryHandler = (token: string) => async (query: InlineQuery, context: TelegramContext) => {
   logger.debug('Received inline query', query)
 
   if (!query.query) {
@@ -103,5 +103,5 @@ export function inliqueryHandler (query: InlineQuery, context: TelegramContext) 
 
   const results = getResults(query.query)
 
-  endWithInlineQueryResults(results, context, { cacheTime: 0, isPersonal: false })
+  return endWithInlineQueryResults(results, context, { cacheTime: 0, isPersonal: false, token })
 }
