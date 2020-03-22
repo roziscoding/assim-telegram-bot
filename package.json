@@ -3,17 +3,9 @@
   "version": "2.0.0",
   "description": "",
   "main": "dist/index.js",
-  "scripts": {
-    "build": "tsc",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo",
-    "build:clean": "npm run clean && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "shell": "zsh && exit 0",
-    "start": "node dist/index.js",
-    "launch": "npm run build:clean && npm start"
-  },
+  "scripts": {},
   "keywords": [],
-  "author": "",
+  "author": "Rogério Munhoz",
   "license": "GPL-3.0",
   "devDependencies": {
     "@types/uuid": "^3.4.6",
@@ -24,9 +16,12 @@
     "@now/node": "^1.4.1",
     "got": "^10.6.0",
     "logdown": "^3.3.1",
-    "ngrok": "^3.2.5",
     "sugar-env": "^1.5.7",
     "telegraf": "^3.34.1",
     "uuid": "^3.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rjmunhoz/assim-telegram-bot"
   }
 }
