@@ -37,6 +37,10 @@ function getAllUpper (query: string) {
   return transform(query.toUpperCase())
 }
 
+function getAllStarred (query: string) {
+  return transform(`🌠${query}🌠`)
+}
+
 function getPreMixed (query: string) {
   const { before, pre, after } = extractPre(query)
 
@@ -61,11 +65,20 @@ function getPreAllUpper (query: string) {
   return `${before}${transform(pre.toUpperCase())}${after}`
 }
 
+function getPreStarred (query: string) {
+  const { before, pre, after } = extractPre(query)
+
+  if (!pre) return ''
+
+  return `${before}${transform(`🌠${query}🌠`)}${after}`
+}
+
 function getPreResults (query: string) {
   return [
     [ getPreMixed(query), 'getPreMixed', 'Normal' ],
     [ getPreAllLower(query), 'getPreAllLower', 'Tudo minúsculo' ],
-    [ getPreAllUpper(query), 'getPreAllUpper', 'Tudo maiúsculo' ]
+    [ getPreAllUpper(query), 'getPreAllUpper', 'Tudo maiúsculo' ],
+    [ getPreStarred(query), 'getPreStarred', 'Com estrelas' ]
   ]
 }
 
@@ -74,6 +87,7 @@ function getNonPreResults (query: string) {
     [ getMixed(query), 'getMixed', 'Normal' ],
     [ getAllLower(query), 'getAllLower', 'Tudo minúsculo' ],
     [ getAllUpper(query), 'getAllUpper', 'Tudo maiúsculo' ],
+    [ getAllStarred(query), 'getAllStarred', 'Com estrelas' ]
   ]
 }
 
